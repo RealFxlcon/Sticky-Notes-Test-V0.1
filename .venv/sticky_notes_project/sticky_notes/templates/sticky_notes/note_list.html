@@ -1,0 +1,17 @@
+{% extends 'sticky_notes/base.html' %}
+
+{% block content %}
+<h2>My Sticky Notes</h2>
+
+<div id="board">
+    {% for note in notes %}
+    <div class="sticky-note {{ note.color }}">
+        <h2>{{ note.title }}</h2>
+        <p>{{ note.content }}</p>
+        <div class="actions">
+            <a href="{% url 'note_edit' note.id %}">Edit</a> | <a href="{% url 'note_delete' note.id %}">Delete</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{%endblock%}
